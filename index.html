@@ -71,9 +71,29 @@
                     <button id="addEntryBtn" class="block px-4 py-2 text-sm hover:bg-gray-100">+</button>
                 </li>
             </ul>
-            <script>
-                // Function to read entries from localStorage and append them to the list
-                function appendEntriesFromLocalStorage() {
+    </div>
+</div>
+
+   <!-- WebView Component -->
+<iframe
+    id="webView"
+    src="about:blank"
+    class="w-full mt-1 border-0"
+></iframe>
+</div>
+<!-- Modal -->
+<div id="modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-4 rounded">
+        <h2 class="text-lg font-bold mb-2">Eintrag hinzufügen</h2>
+        <input type="text" id="nameInput" placeholder="Name" class="border border-gray-300 p-2 mb-2" />
+        <input type="text" id="urlInput" placeholder="URL" class="border border-gray-300 p-2 mb-2" />
+        <button id="saveEntryBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Speichern</button>
+        <button id="cancelBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Abbrechen</button>
+    </div>
+</div>
+<script>
+    // Function to read entries from localStorage and append them to the list
+    function appendEntriesFromLocalStorage() {
                     const entries = JSON.parse(localStorage.getItem("entries"));
                     const list = document.getElementById("dropdownListe");
 
@@ -93,29 +113,7 @@
 
                 // Call the function on page load
                 window.addEventListener("load", appendEntriesFromLocalStorage);
-            </script>
-    </div>
-</div>
-
-<!-- Modal -->
-<div id="modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-    <div class="bg-white p-4 rounded">
-        <h2 class="text-lg font-bold mb-2">Eintrag hinzufügen</h2>
-        <input type="text" id="nameInput" placeholder="Name" class="border border-gray-300 p-2 mb-2" />
-        <input type="text" id="urlInput" placeholder="URL" class="border border-gray-300 p-2 mb-2" />
-        <button id="saveEntryBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Speichern</button>
-        <button id="cancelBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Abbrechen</button>
-    </div>
-</div>
-
-   <!-- WebView Component -->
-   <iframe
-    id="webView"
-    src="about:blank"
-    class="w-full mt-1 border-0"
-    ></iframe>
-</div>
-<script>
+    
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
         const navbarHeight = document.getElementById("navbar").offsetHeight;
@@ -249,5 +247,4 @@
                 
     </script>
 </body>
-</html>
 </html>
