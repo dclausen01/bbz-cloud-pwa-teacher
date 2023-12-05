@@ -13,9 +13,9 @@
     </style>
  </head>
  <body class="bg-gray-100 max-w-full">
-    <div id="navbar" class="container mx-auto p-2">
+    <div class="container mx-auto p-2">
      <!-- Header with Logo and Buttons -->
-     <div class="flex items-center justify-between bg-white p-4 shadow-md">
+     <div id="navbar" class="flex items-center justify-between bg-white p-4 shadow-md">
         <img
          src="https://www.bbz-rd-eck.de/wp-content/uploads/2018/09/BBZ-Logo-Master.png"
          alt="BBZ Logo"
@@ -30,8 +30,8 @@
                 schul cloud
             </button>
             <button
-                    id="moodleBtn"
-                    class="bg-orange-500 hover:bg-orange-700 text-white font-semibold xs:text-xs sm:text-sm md:text-md lg:text-lg py-2 px-4 rounded-none"
+                id="moodleBtn"
+                class="bg-orange-500 hover:bg-orange-700 text-white font-semibold xs:text-xs sm:text-sm md:text-md lg:text-lg py-2 px-4 rounded-none"
             >
                 Moodle
             </button>
@@ -50,27 +50,27 @@
                 id="taskcardsBtn"
                 class="bg-cyan-300 hover:bg-cyan-500 text-white xs:text-xs sm:text-sm md:text-md lg:text-lg font-semibold py-2 px-4 rounded-none"
             >
-            Task Cards
+                Task Cards
             </button>
             <button id="bbzWikiBtn"
                 class="bg-blue-300 hover:bg-blue-500 text-white xs:text-xs sm:text-sm md:text-md lg:text-lg font-semibold py-2 px-4 rounded-none">
                 BBZ Wiki
-        </button>
-        <button id="dropdownBtn"
-            class="bg-green-300 hover:bg-green-500 text-white font-semibold xs:text-xs sm:text-sm md:text-md lg:text-lg py-2 px-4 rounded-r">
-            Tools
-        </button>
-        <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
-            <li><a href="https://office.com" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Office</a></li>
-            <li><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">DigiScreen</a></li>
-            <li><a href="https://bibox2.westermann.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">BiBox</a></li>
-            <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
-            <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
-            <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
-            <li>
-                <button id="addEntryBtn" class="block px-4 py-2 text-sm hover:bg-gray-100">+</button>
-            </li>
-        </ul>
+            </button>
+            <button id="dropdownBtn"
+                class="bg-green-300 hover:bg-green-500 text-white font-semibold xs:text-xs sm:text-sm md:text-md lg:text-lg py-2 px-4 rounded-r">
+                ...
+            </button>
+            <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
+                <li><a href="https://office.com" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Office</a></li>
+                <li><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">DigiScreen</a></li>
+                <li><a href="https://bibox2.westermann.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">BiBox</a></li>
+                <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
+                <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
+                <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
+                <li>
+                    <button id="addEntryBtn" class="block px-4 py-2 text-sm hover:bg-gray-100">+</button>
+                </li>
+            </ul>
             <script>
                 // Function to read entries from localStorage and append them to the list
                 function appendEntriesFromLocalStorage() {
@@ -108,6 +108,13 @@
     </div>
 </div>
 
+   <!-- WebView Component -->
+   <iframe
+    id="webView"
+    src="about:blank"
+    class="w-full mt-1 border-0"
+    ></iframe>
+</div>
 <script>
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
@@ -163,18 +170,7 @@
         urlInput.value = "";
         modal.classList.add("hidden");
     });
-</script>
-    </div>
-   </div>
-  
-   <!-- WebView Component -->
-        <iframe
-        id="webView"
-        src="about:blank"
-        class="w-full mt-1 border-0"
-     ></iframe>
-    </div>
-    <script>
+
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
         const navbarHeight = document.getElementById("navbar").offsetHeight;
@@ -250,8 +246,7 @@
                 dropdownList.classList.add("hidden");
             }
         });
-        
-        
+                
     </script>
 </body>
 </html>
