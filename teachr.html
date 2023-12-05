@@ -70,6 +70,29 @@
             <li>
                 <button id="addEntryBtn" class="block px-4 py-2 text-sm hover:bg-gray-100">+</button>
             </li>
+            <script>
+                // Function to read entries from localStorage and append them to the list
+                function appendEntriesFromLocalStorage() {
+                    const entries = JSON.parse(localStorage.getItem("entries"));
+                    const list = document.getElementById("dropdownListe");
+
+                    if (entries && Array.isArray(entries)) {
+                        entries.forEach((entry) => {
+                            const listItem = document.createElement("li");
+                            const link = document.createElement("a");
+                            link.href = entry.url;
+                            link.target = "_blank";
+                            link.textContent = entry.name;
+                            link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
+                            listItem.appendChild(link);
+                            list.appendChild(listItem);
+                        });
+                    }
+                }
+
+                // Call the function on page load
+                window.addEventListener("load", appendEntriesFromLocalStorage);
+            </script>
         </ul>
     </div>
 </div>
