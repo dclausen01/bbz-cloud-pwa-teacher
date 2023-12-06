@@ -67,12 +67,13 @@
                 ...
             </button>
             <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
-                <li><a href="https://office.com" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">Office</a></li>
-                <li><a href="https://ladigitale.dev/digiscreen/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">DigiScreen</a></li>
-                <li><a href="https://bibox2.westermann.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">BiBox</a></li>
-                <li><a href="https://my.plagaware.com/login" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
-                <li><a href="https://kurzelinks.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
-                <li><a href="https://portal.schule-sh.de/univention/portal/#/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
+                <li><a href="https://office.com" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Office</b></a></li>
+                <li><a href="https://ladigitale.dev/digiscreen/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Digiscreen</b>></a></li>
+                <li><a href="https://bibox2.westermann.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>BiBox</b></a></li>
+                <li><a href="https://my.plagaware.com/login" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>PlagScan</b></a></li>
+                <li><a href="https://kurzelinks.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Kurze Links</b></a></li>
+                <li><a href="https://portal.schule-sh.de/univention/portal/#/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Schule.SH Portal</b></a></li>
+                <li><hr></li>
                 <li id="addEntryLI">
                     <button id="addEntryBtn" class="block px-4 py-2 text-center text-2xl hover:bg-blue-200">+</button>
                 </li>
@@ -149,7 +150,7 @@
     }
     
     function loadUrlNewWindow(url) {
-        window.open(url, '_blank', 'menubar=no, status=no, width=800, height=600').focus();
+        window.open(url, '_blank', 'menubar=no, status=no, width=1000, height=800').focus();
     } 
     // Open modal when add entry button is clicked
     const addEntryBtn = document.getElementById("addEntryBtn");
