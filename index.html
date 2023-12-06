@@ -122,17 +122,15 @@
                     if (confirmDelete) {
                         listItem.remove();
                         // Code to delete the entry from localStorage
-                       
-                            const confirmDelete = confirm("Are you sure you want to delete this entry?");
-                            if (confirmDelete) {
-                                listItem.remove();
-                                const entries = JSON.parse(localStorage.getItem("entries"));
-                                const updatedEntries = entries.filter((entry) => entry.url !== link.href);
-                                console.log(updatedEntries);
-                                localStorage.setItem("entries", JSON.stringify(updatedEntries));
-                            }
-                    }
-                });
+                        const entries = JSON.parse(localStorage.getItem("entries"));
+                        const updatedEntries = entries.filter((entry) => entry.url !== link.href);
+                        console.log(updatedEntries);
+                        localStorage.setItem("entries", JSON.stringify(updatedEntries));
+                        if (updatedEntries.length === 0) {
+                            localStorage.removeItem("entries");
+                        }
+                        }
+                    });
                 listItem.appendChild(deleteButton);
 
                 list.appendChild(listItem);
