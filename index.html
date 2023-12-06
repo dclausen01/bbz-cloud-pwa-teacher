@@ -67,12 +67,12 @@
                 ...
             </button>
             <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
-                <li><a href="https://office.com" onclick="loadUrlNewWindow(this.value, '_parent')" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Office</b></a></li>
-                <li><a href="https://ladigitale.dev/digiscreen/" onclick="loadUrlNewWindow(this.value, '_parent')" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Digiscreen</b></a></li>
-                <li><a href="https://bibox2.westermann.de/" onclick="loadUrlNewWindow(this.value, '_parent')" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>BiBox</b></a></li>
-                <li><a href="https://my.plagaware.com/login" onclick="loadUrl(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>PlagScan</b></a></li>
-                <li><a href="https://kurzelinks.de/" onclick="loadUrl(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Kurze Links</b></a></li>
-                <li><a href="https://portal.schule-sh.de/univention/portal/#/" onclick="loadUrl(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Schule.SH Portal</b></a></li>
+                <li><a href="https://office.com" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Office</b></a></li>
+                <li><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Digiscreen</b></a></li>
+                <li><a href="https://bibox2.westermann.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>BiBox</b></a></li>
+                <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>PlagScan</b></a></li>
+                <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Kurze Links</b></a></li>
+                <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Schule.SH Portal</b></a></li>
                 <li><hr></li>
                 <li id="addEntryLI">
                     <button id="addEntryBtn" class="block px-4 py-2 text-center text-2xl hover:bg-blue-200">+</button>
@@ -108,7 +108,7 @@
                 const listItem = document.createElement("li");
                 const link = document.createElement("a");
                 link.href = entry.url;
-                link.onclick = () => { loadUrlNewWindow(entry.url, "_blank"); };
+                link.target = "_blank";
                 link.textContent = entry.name;
                 link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
                 listItem.appendChild(link);
