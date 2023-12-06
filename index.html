@@ -3,9 +3,9 @@
  <head>
     <meta charset="UTF-8" />
     <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="msapplication-starturl" content="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="manifest" href="manifest.json">
     <title>BBZ Cloud</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,9 +16,9 @@
     </style>
  </head>
  <body class="bg-gray-100 max-w-full">
-    <div class="container mx-auto p-2">
+    <div class="mx-auto p-2">
      <!-- Header with Logo and Buttons -->
-     <div id="navbar" class="flex items-center justify-between bg-white p-4 shadow-md">
+     <div id="navbar" class="flex items-center justify-between bg-white p-2 shadow-md">
         <img
          src="https://www.bbz-rd-eck.de/wp-content/uploads/2018/09/BBZ-Logo-Master.png"
          alt="BBZ Logo"
@@ -77,6 +77,17 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-4 rounded">
+            <h2 class="text-lg font-bold mb-2">Eintrag hinzufügen</h2>
+            <input type="text" id="nameInput" placeholder="Name" class="border border-gray-300 p-2 mb-2" />
+            <input type="text" id="urlInput" placeholder="URL" class="border border-gray-300 p-2 mb-2" />
+            <button id="saveEntryBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Speichern</button>
+            <button id="cancelBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Abbrechen</button>
+        </div>
+    </div>
+
    <!-- WebView Component -->
 <iframe
     id="webView"
@@ -84,16 +95,7 @@
     class="w-full mt-1 border-0"
 ></iframe>
 </div>
-<!-- Modal -->
-<div id="modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-    <div class="bg-white p-4 rounded">
-        <h2 class="text-lg font-bold mb-2">Eintrag hinzufügen</h2>
-        <input type="text" id="nameInput" placeholder="Name" class="border border-gray-300 p-2 mb-2" />
-        <input type="text" id="urlInput" placeholder="URL" class="border border-gray-300 p-2 mb-2" />
-        <button id="saveEntryBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Speichern</button>
-        <button id="cancelBtn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded ml-2">Abbrechen</button>
-    </div>
-</div>
+
 <script>
     // Function to read entries from localStorage and append them to the list
     function appendEntriesFromLocalStorage() {
@@ -114,14 +116,14 @@
                     }
                 }
 
-                // Call the function on page load
-                window.addEventListener("load", appendEntriesFromLocalStorage);
-    
+    // Call the function on page load
+    window.addEventListener("load", appendEntriesFromLocalStorage);
+
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
         const navbarHeight = document.getElementById("navbar").offsetHeight;
         const iframe = document.getElementById("webView");
-        iframe.style.height = `calc(100vh - ${navbarHeight}px)`;
+        iframe.style.height = `calc(100vh - ${navbarHeight+5}px)`;
     }
 
     // Call the function initially
@@ -138,7 +140,10 @@
     function loadUrl(url) {
         webView.src = url;
     }
-
+    
+    function loadUrlNewWindow(url) {
+        window.open(url, '_blank').focus();
+    } 
     // Open modal when add entry button is clicked
     const addEntryBtn = document.getElementById("addEntryBtn");
     const modal = document.getElementById("modal");
@@ -172,82 +177,59 @@
         modal.classList.add("hidden");
     });
 
-    // Function to adjust the height of the WebView to the available space
-    function adjustIframeHeight() {
-        const navbarHeight = document.getElementById("navbar").offsetHeight;
-        const iframe = document.getElementById("webView");
-        iframe.style.height = `calc(100vh - ${navbarHeight}px)`;
-    }
-
-    // Call the function initially
-    adjustIframeHeight();
-
-    // Adjust iframe height when window is resized
-    window.addEventListener("resize", adjustIframeHeight);
-
-   // JavaScript to handle button actions and WebView interactions
-    const webView = document.getElementById("webView");
-    webView.src = "start.html";
-    // Function to load a URL into the WebView and update the URL field
-    function loadUrl(url) {
-        webView.src = url;
-    }
-    function loadUrlNewWindow(url) {
-        window.open(url, '_blank').focus();
-    } 
-        // Button event listeners
-        document
-            .getElementById("schulCloudBtn")
-            .addEventListener("click", () => loadUrl("https://app.schul.cloud"));
-        document
-            .getElementById("moodleBtn")
-            .addEventListener("click", () =>
-            loadUrl("https://portal.bbz-rd-eck.de"),
-            );
-        document
-        .getElementById("owaBtn")
+    // Button event listeners
+    document
+        .getElementById("schulCloudBtn")
+        .addEventListener("click", () => loadUrl("https://app.schul.cloud"));
+    document
+        .getElementById("moodleBtn")
         .addEventListener("click", () =>
-            loadUrlNewWindow("https://exchange.bbz-rd-eck.de/owa"),
+        loadUrl("https://portal.bbz-rd-eck.de"),
         );
-        document
-        .getElementById("bbbBtn")
-        .addEventListener("click", () =>
-            loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b"),
-        );
-        document
-        .getElementById("cryptPadBtn")
-        .addEventListener("click", () => loadUrlNewWindow("https://cryptpad.fr"));
-        document
-            .getElementById("taskcardsBtn")
-            .addEventListener("click", () => loadUrl("https://bbzrdeck.taskcards.app/#/home/start"));
-        document
-        .getElementById("bbzWikiBtn")
-        .addEventListener("click", () => loadUrl("https://wiki.bbz-rd-eck.com"));
-        document
-            .getElementById("dropdownBtn")
-            .addEventListener("click", () => {
-                const dropdownList = document.getElementById("dropdownListe");
-                dropdownList.classList.toggle("hidden");
-                const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
-                dropdownList.style.top = `${buttonRect.bottom}px`;
-                dropdownList.style.left = `${buttonRect.left}px`;
-            });
-
-        window.addEventListener("resize", () => {
+    document
+    .getElementById("owaBtn")
+    .addEventListener("click", () =>
+        loadUrlNewWindow("https://exchange.bbz-rd-eck.de/owa"),
+    );
+    document
+    .getElementById("bbbBtn")
+    .addEventListener("click", () =>
+        loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b"),
+    );
+    document
+    .getElementById("cryptPadBtn")
+    .addEventListener("click", () => loadUrlNewWindow("https://cryptpad.fr"));
+    document
+        .getElementById("taskcardsBtn")
+        .addEventListener("click", () => loadUrl("https://bbzrdeck.taskcards.app/#/home/start"));
+    document
+    .getElementById("bbzWikiBtn")
+    .addEventListener("click", () => loadUrl("https://wiki.bbz-rd-eck.com"));
+    document
+        .getElementById("dropdownBtn")
+        .addEventListener("click", () => {
             const dropdownList = document.getElementById("dropdownListe");
+            dropdownList.classList.toggle("hidden");
             const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
             dropdownList.style.top = `${buttonRect.bottom}px`;
             dropdownList.style.left = `${buttonRect.left}px`;
         });
 
-        // Close dropdown menu when a click event occurs anywhere on the screen
-        window.addEventListener("click", (event) => {
-            const dropdownList = document.getElementById("dropdownListe");
-            if (!event.target.matches("#dropdownBtn") && !event.target.matches("#dropdownListe")) {
-                dropdownList.classList.add("hidden");
-            }
-        });
-                
+    window.addEventListener("resize", () => {
+        const dropdownList = document.getElementById("dropdownListe");
+        const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
+        dropdownList.style.top = `${buttonRect.bottom}px`;
+        dropdownList.style.left = `${buttonRect.left}px`;
+    });
+
+    // Close dropdown menu when a click event occurs anywhere on the screen
+    window.addEventListener("click", (event) => {
+        const dropdownList = document.getElementById("dropdownListe");
+        if (!event.target.matches("#dropdownBtn") && !event.target.matches("#dropdownListe")) {
+            dropdownList.classList.add("hidden");
+        }
+    });
+            
     </script>
-</body>
+  </body>
 </html>
