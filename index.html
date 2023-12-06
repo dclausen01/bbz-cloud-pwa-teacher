@@ -67,12 +67,41 @@
                 ...
             </button>
             <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
-                <li><a href="https://office.com" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Office</b></a></li>
-                <li><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Digiscreen</b></a></li>
-                <li><a href="https://bibox2.westermann.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>BiBox</b></a></li>
-                <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>PlagScan</b></a></li>
-                <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Kurze Links</b></a></li>
-                <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Schule.SH Portal</b></a></li>
+                <li class="flex justify-between">
+                    <a href="https://office.com" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                        <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://www.office.com" class="inline-block h-4 mr-4">
+                        <b>Office</b>
+                    </a>
+                </li>
+                <li><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                    <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://ladigitale.dev/digiscreen/" class="inline-block h-4 mr-4">
+                    <b>Digiscreen</b>
+                    </a>
+                </li>
+                <li><a href="https://bibox2.westermann.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                    <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://bibox2.westermann.de/"
+                        class="inline-block h-4 mr-4">
+                        <b>BiBox</b>
+                    </a>
+                </li>
+                <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                    <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://my.plagaware.com/"
+                        class="inline-block h-4 mr-4">
+                        <b>PlagScan</b>
+                    </a>
+                </li>
+                <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                    <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://kurzelinks.de/"
+                        class="inline-block h-4 mr-4">
+                        <b>Kurze Links</b>
+                    </a>
+                </li>
+                <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                    <img src="https://s2.googleusercontent.com/s2/favicons?domain_url=https://portal.schule-sh.de/univention" 
+                        class="inline-block h-4 mr-4">
+                        <b>Schule.SH</b>
+                    </a>
+                </li>
                 <li><hr></li>
                 <li id="addEntryLI">
                     <button id="addEntryBtn" class="block px-4 py-2 text-center text-2xl hover:bg-blue-200">+</button>
@@ -108,10 +137,16 @@
                 const listItem = document.createElement("li");
                 listItem.classList.add("flex", "justify-between");
                 const link = document.createElement("a");
+                // adding favicons
+                const favicon = document.createElement("img");
+                favicon.src = "https://s2.googleusercontent.com/s2/favicons?domain_url="+entry.url;
+                favicon.classList.add("inline-block", "h-4", "mr-4");
+                // adding link
                 link.href = entry.url;
                 link.target = "_blank";
                 link.textContent = entry.name;
                 link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
+                link.prepend(favicon);
                 listItem.appendChild(link);
 
                 const deleteButton = document.createElement("button");
