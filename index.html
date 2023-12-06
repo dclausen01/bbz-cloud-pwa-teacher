@@ -70,6 +70,9 @@
                 <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
                 <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
                 <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
+                <li id="addEntryLI">
+                    <button id="addEntryBtn" class="block px-4 py-2 text-center text-2xl hover:bg-blue-200">+</button>
+                </li>
             </ul>
         </div>
     </div>
@@ -96,33 +99,54 @@
 <script>
     // Function to read entries from localStorage and append them to the list
     function appendEntriesFromLocalStorage() {
-                    const entries = JSON.parse(localStorage.getItem("entries"));
-                    const list = document.getElementById("dropdownListe");
+        const entries = JSON.parse(localStorage.getItem("entries"));
+        const list = document.getElementById("dropdownListe");
+       
+        if (entries && Array.isArray(entries)) {
+            entries.forEach((entry) => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = entry.url;
+                link.target = "_blank";
+                link.textContent = entry.name;
+                link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
+                listItem.appendChild(link);
+                list.appendChild(listItem);
+            });
+        }
+        // Move the addEntryLI element to the end of the list
+        const addEntryItem = document.getElementById("addEntryLI");
+        list.appendChild(addEntryItem);
+}
 
-                    if (entries && Array.isArray(entries)) {
-                        entries.forEach((entry) => {
-                            const listItem = document.createElement("li");
-                            const link = document.createElement("a");
-                            link.href = entry.url;
-                            link.target = "_blank";
-                            link.textContent = entry.name;
-                            link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
-                            listItem.appendChild(link);
-                            list.appendChild(listItem);
-                        });
-                    }
-                    // Add the add entry button at last element
-                    const listItem = document.createElement("li");
-                    const button = document.createElement("button");
-                    button.id = "addEntryBtn";
-                    button.textContent = "+";
-                    button.classList.add("block", "px-4", "py-2", "text-center", "text-2xl", "hover:bg-blue-200");
-                    listItem.appendChild(link);
-                    list.appendChild(listItem);
-                }
+// Call the function on page load
+window.addEventListener("load", appendEntriesFromLocalStorage);
+
+
+// Function to adjust the height of the WebView to the available space
+function adjustIframeHeight() {
+const navbarHeight = document.getElementById("navbar").offsetHeight;
+const iframe = document.getElementById("webView");
+iframe.style.height = `calc(100vh - ${navbarHeight+5}px)`;
+}
+        if (entries && Array.isArray(entries)) {
+            entries.forEach((entry) => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = entry.url;
+                link.target = "_blank";
+                link.textContent = entry.name;
+                link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
+                listItem.appendChild(link);
+                list.appendChild(listItem);
+            });
+        }
+
+    }
 
     // Call the function on page load
     window.addEventListener("load", appendEntriesFromLocalStorage);
+
 
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
