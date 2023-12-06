@@ -106,6 +106,7 @@
         if (entries && Array.isArray(entries)) {
             entries.forEach((entry) => {
                 const listItem = document.createElement("li");
+                listItem.classList.add("flex", "justify-between");
                 const link = document.createElement("a");
                 link.href = entry.url;
                 link.target = "_blank";
@@ -126,7 +127,7 @@
                             if (confirmDelete) {
                                 listItem.remove();
                                 const entries = JSON.parse(localStorage.getItem("entries"));
-                                const updatedEntries = entries.filter((entry) => entry.name !== link.textContent);
+                                const updatedEntries = entries.filter((entry) => entry.url !== link.href);
                                 localStorage.setItem("entries", JSON.stringify(updatedEntries));
                             }
                         });
