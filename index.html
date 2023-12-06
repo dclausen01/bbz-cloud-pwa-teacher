@@ -67,12 +67,12 @@
                 ...
             </button>
             <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
-                <li><a href="https://office.com" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Office</a></li>
-                <li><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">DigiScreen</a></li>
-                <li><a href="https://bibox2.westermann.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">BiBox</a></li>
-                <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
-                <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
-                <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
+                <li><a href="https://office.com" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">Office</a></li>
+                <li><a href="https://ladigitale.dev/digiscreen/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">DigiScreen</a></li>
+                <li><a href="https://bibox2.westermann.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">BiBox</a></li>
+                <li><a href="https://my.plagaware.com/login" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
+                <li><a href="https://kurzelinks.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
+                <li><a href="https://portal.schule-sh.de/univention/portal/#/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
                 <li id="addEntryLI">
                     <button id="addEntryBtn" class="block px-4 py-2 text-center text-2xl hover:bg-blue-200">+</button>
                 </li>
@@ -110,7 +110,7 @@
                 const listItem = document.createElement("li");
                 const link = document.createElement("a");
                 link.href = entry.url;
-                link.target = "_blank";
+                link.onclick = () => { loadUrlNewWindow(entry.url); };
                 link.textContent = entry.name;
                 link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
                 listItem.appendChild(link);
@@ -235,7 +235,7 @@
             e.preventDefault();
             window.scrollTo(0, 0);
         });
-        
+
     // Close dropdown menu when a click event occurs anywhere on the screen
     window.addEventListener("click", (event) => {
         const dropdownList = document.getElementById("dropdownListe");
