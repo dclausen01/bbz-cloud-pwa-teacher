@@ -13,6 +13,9 @@
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <style>
      /* Additional styles if needed */
+        body {
+            position: fixed;
+        }
     </style>
  </head>
  <body class="bg-gray-100 max-w-full">
@@ -227,6 +230,12 @@
         dropdownList.style.left = `${buttonRect.left-25}px`;
     });
 
+    // Prevent scrolling 
+    window.addEventListener("scroll", (e) => {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+        });
+        
     // Close dropdown menu when a click event occurs anywhere on the screen
     window.addEventListener("click", (event) => {
         const dropdownList = document.getElementById("dropdownListe");
