@@ -183,8 +183,11 @@
     const urlInput = document.getElementById("urlInput");
     saveEntryBtn.addEventListener("click", function() {
         const name = nameInput.value;
-        const url = urlInput.value;
+        let url = urlInput.value;
         if (name && url) {
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                url = "https://" + url;
+            }
             const entry = { name, url };
             const entries = JSON.parse(localStorage.getItem("entries")) || [];
             entries.push(entry);
