@@ -21,7 +21,7 @@
  <body class="bg-gray-100 max-w-full">
     <div class="mx-auto p-2">
      <!-- Header with Logo and Buttons -->
-     <div id="navbar" class="flex items-center justify-between bg-white p-2 shadow-md">
+     <div id="navbar" class="flex items-center justify-between h-16 bg-white p-2 shadow-md">
         <img
          src="https://www.bbz-rd-eck.de/wp-content/uploads/2018/09/BBZ-Logo-Master.png"
          alt="BBZ Logo"
@@ -102,7 +102,7 @@
     function appendEntriesFromLocalStorage() {
         const entries = JSON.parse(localStorage.getItem("entries"));
         const list = document.getElementById("dropdownListe");
-       
+
         if (entries && Array.isArray(entries)) {
             entries.forEach((entry) => {
                 const listItem = document.createElement("li");
@@ -112,6 +112,28 @@
                 link.textContent = entry.name;
                 link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
                 listItem.appendChild(link);
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "-";
+                deleteButton.classList.add("ml-2", "text-red-500", "hover:text-red-700");
+                deleteButton.addEventListener("click", () => {
+                    const confirmDelete = confirm("Are you sure you want to delete this entry?");
+                    if (confirmDelete) {
+                        listItem.remove();
+                        // Code to delete the entry from localStorage
+                        deleteButton.addEventListener("click", () => {
+                            const confirmDelete = confirm("Are you sure you want to delete this entry?");
+                            if (confirmDelete) {
+                                listItem.remove();
+                                const entries = JSON.parse(localStorage.getItem("entries"));
+                                const updatedEntries = entries.filter((entry) => entry.name !== link.textContent);
+                                localStorage.setItem("entries", JSON.stringify(updatedEntries));
+                            }
+                        });
+                    }
+                });
+                listItem.appendChild(deleteButton);
+
                 list.appendChild(listItem);
             });
         }
