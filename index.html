@@ -221,14 +221,14 @@
             dropdownList.classList.toggle("hidden");
             const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
             dropdownList.style.top = `${buttonRect.bottom}px`;
-            dropdownList.style.left = `${buttonRect.left-40}px`;
+            dropdownList.style.left = `${buttonRect.left-100}px`;
         });
 
     window.addEventListener("resize", () => {
         const dropdownList = document.getElementById("dropdownListe");
         const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
         dropdownList.style.top = `${buttonRect.bottom}px`;
-        dropdownList.style.left = `${buttonRect.left-40}px`;
+        dropdownList.style.left = `${buttonRect.left-100}px`;
     });
 
     // Prevent scrolling 
