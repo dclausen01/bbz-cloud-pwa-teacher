@@ -70,9 +70,6 @@
                 <li><a href="https://my.plagaware.com/login" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">PlugScan</a></li>
                 <li><a href="https://kurzelinks.de/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Kurze Links</a></li>
                 <li><a href="https://portal.schule-sh.de/univention/portal/#/" target="_blank" class="block px-4 py-2 text-sm hover:bg-gray-100">Schule.SH Portal</a></li>
-                <li>
-                    <button id="addEntryBtn" class="block px-4 py-2 text-sm hover:bg-gray-100">+</button>
-                </li>
             </ul>
         </div>
     </div>
@@ -114,6 +111,14 @@
                             list.appendChild(listItem);
                         });
                     }
+                    // Add the add entry button at last element
+                    const listItem = document.createElement("li");
+                    const button = document.createElement("button");
+                    button.id = "addEntryBtn";
+                    button.textContent = "+";
+                    button.classList.add("block", "px-4", "py-2", "text-center", "text-2xl", "hover:bg-blue-200");
+                    listItem.appendChild(link);
+                    list.appendChild(listItem);
                 }
 
     // Call the function on page load
@@ -194,7 +199,7 @@
     document
     .getElementById("bbbBtn")
     .addEventListener("click", () =>
-        loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b"),
+        loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b/signin"),
     );
     document
     .getElementById("cryptPadBtn")
@@ -212,14 +217,14 @@
             dropdownList.classList.toggle("hidden");
             const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
             dropdownList.style.top = `${buttonRect.bottom}px`;
-            dropdownList.style.left = `${buttonRect.left}px`;
+            dropdownList.style.left = `${buttonRect.left-25}px`;
         });
 
     window.addEventListener("resize", () => {
         const dropdownList = document.getElementById("dropdownListe");
         const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
         dropdownList.style.top = `${buttonRect.bottom}px`;
-        dropdownList.style.left = `${buttonRect.left}px`;
+        dropdownList.style.left = `${buttonRect.left-25}px`;
     });
 
     // Close dropdown menu when a click event occurs anywhere on the screen
