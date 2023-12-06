@@ -123,8 +123,7 @@
                         listItem.remove();
                         // Code to delete the entry from localStorage
                         const entries = JSON.parse(localStorage.getItem("entries"));
-                        const updatedEntries = entries.filter((entry) => entry.url !== link.href);
-                        console.log(updatedEntries);
+                        const updatedEntries = entries.filter((entry) => entry.name !== link.textContent);
                         localStorage.setItem("entries", JSON.stringify(updatedEntries));
                         if (updatedEntries.length === 0) {
                             localStorage.removeItem("entries");
