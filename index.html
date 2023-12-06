@@ -117,31 +117,6 @@
         // Move the addEntryLI element to the end of the list
         const addEntryItem = document.getElementById("addEntryLI");
         list.appendChild(addEntryItem);
-}
-
-// Call the function on page load
-window.addEventListener("load", appendEntriesFromLocalStorage);
-
-
-// Function to adjust the height of the WebView to the available space
-function adjustIframeHeight() {
-const navbarHeight = document.getElementById("navbar").offsetHeight;
-const iframe = document.getElementById("webView");
-iframe.style.height = `calc(100vh - ${navbarHeight+5}px)`;
-}
-        if (entries && Array.isArray(entries)) {
-            entries.forEach((entry) => {
-                const listItem = document.createElement("li");
-                const link = document.createElement("a");
-                link.href = entry.url;
-                link.target = "_blank";
-                link.textContent = entry.name;
-                link.classList.add("block", "px-4", "py-2", "text-sm", "hover:bg-gray-100");
-                listItem.appendChild(link);
-                list.appendChild(listItem);
-            });
-        }
-
     }
 
     // Call the function on page load
@@ -154,7 +129,7 @@ iframe.style.height = `calc(100vh - ${navbarHeight+5}px)`;
         const iframe = document.getElementById("webView");
         iframe.style.height = `calc(100vh - ${navbarHeight+5}px)`;
     }
-
+           
     // Call the function initially
     adjustIframeHeight();
 
