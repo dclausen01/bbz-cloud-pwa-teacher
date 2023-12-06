@@ -67,12 +67,12 @@
                 ...
             </button>
             <ul id="dropdownListe" class="absolute hidden bg-white text-gray-700 pt-1">
-                <li><a href="https://office.com" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Office</b></a></li>
-                <li><a href="https://ladigitale.dev/digiscreen/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Digiscreen</b></a></li>
-                <li><a href="https://bibox2.westermann.de/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>BiBox</b></a></li>
+                <li><a href="https://office.com" onclick="loadUrlNewWindow(this.value, '_parent')" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Office</b></a></li>
+                <li><a href="https://ladigitale.dev/digiscreen/" onclick="loadUrlNewWindow(this.value, '_parent')" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Digiscreen</b></a></li>
+                <li><a href="https://bibox2.westermann.de/" onclick="loadUrlNewWindow(this.value, '_parent')" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>BiBox</b></a></li>
                 <li><a href="https://my.plagaware.com/login" onclick="loadUrl(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>PlagScan</b></a></li>
                 <li><a href="https://kurzelinks.de/" onclick="loadUrl(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Kurze Links</b></a></li>
-                <li><a href="https://portal.schule-sh.de/univention/portal/#/" onclick="loadUrlNewWindow(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Schule.SH Portal</b></a></li>
+                <li><a href="https://portal.schule-sh.de/univention/portal/#/" onclick="loadUrl(this.value)" class="block px-4 py-2 text-sm hover:bg-gray-100"><b>Schule.SH Portal</b></a></li>
                 <li><hr></li>
                 <li id="addEntryLI">
                     <button id="addEntryBtn" class="block px-4 py-2 text-center text-2xl hover:bg-blue-200">+</button>
@@ -146,8 +146,8 @@
         webView.src = url;
     }
     
-    function loadUrlNewWindow(url) {
-        window.open(url, '_blank', 'menubar=no, status=no, width=9500, height=700');
+    function loadUrlNewWindow(url, type) {
+        window.open(url, type, 'menubar=no, status=no, width=9500, height=700');
     } 
     // Open modal when add entry button is clicked
     const addEntryBtn = document.getElementById("addEntryBtn");
@@ -195,16 +195,16 @@
     document
     .getElementById("owaBtn")
     .addEventListener("click", () =>
-        loadUrlNewWindow("https://exchange.bbz-rd-eck.de/owa"),
+        loadUrlNewWindow("https://exchange.bbz-rd-eck.de/owa", "_blank"),
     );
     document
     .getElementById("bbbBtn")
     .addEventListener("click", () =>
-        loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b/signin"),
+        loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b/signin", "_blank"),
     );
     document
     .getElementById("cryptPadBtn")
-    .addEventListener("click", () => loadUrlNewWindow("https://cryptpad.fr"));
+    .addEventListener("click", () => loadUrlNewWindow("https://cryptpad.fr", "_blank"));
     document
         .getElementById("taskcardsBtn")
         .addEventListener("click", () => loadUrl("https://bbzrdeck.taskcards.app/#/home/start"));
