@@ -155,11 +155,30 @@
     </div>
 
    <!-- WebView Components -->
-    <iframe id="webView" allowtransparency="true" src="about:blank" class="w-full mt-1 border-0 bg-white dark:bg-gray-800" preload="https://app.schul.cloud"></iframe>
+    <iframe id="webViewSC" allowtransparency="true" src="https://app.schul.cloud" class=" hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
+    <iframe id="webViewMoodle" allowtransparency="true" src="https://moodle.bbz-rd-eck.de" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
+    <iframe id="webViewUntis" allowtransparency="true" src="https://neilo.webuntis.com/WebUntis/?school=bbz-rd-eck#/basic/login" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
+    <iframe id="webViewTaskCards" allowtransparency="true" src="https://bbzrdeck.taskcards.app/#/home/start" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
+    <iframe id="webViewWiki" allowtransparency="true" src="https://wiki.bbz-rd-eck.de" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
 
 </div>
 
 <script>
+    // Get all WebViews
+    const webViews = document.querySelectorAll("iframe");
+
+    // JavaScript to handle button actions and WebView interactions
+    const webViewStart = document.getElementById("webViewStart");
+    const webViewSC = document.getElementById("webViewSC");
+    const webViewMoodle = document.getElementById("webViewMoodle");
+    const webViewUntis = document.getElementById("webViewUntis");
+    const webViewTaskCards = document.getElementById("webViewTaskCards");
+    const webViewWiki = document.getElementById("webViewWiki");
+    // Set the source of the start page
+    webViewStart.src = "start.html";
+    // Set the current WebView to the start page
+    let currentWebView = webViewStart;
+
     // Function to read entries from localStorage and append them to the list
     function appendEntriesFromLocalStorage() {
         const entries = JSON.parse(localStorage.getItem("entries"));
@@ -214,8 +233,9 @@
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
         const navbarHeight = document.getElementById("navbar").offsetHeight;
-        const iframe = document.getElementById("webView");
-        iframe.style.height = `calc(100vh - ${navbarHeight+5}px)`;
+        webViews.forEach(wv => {
+            wv.style.height = `calc(100vh - ${navbarHeight + 5}px)`;
+        });
     }
            
     // Call the function initially
@@ -224,13 +244,15 @@
     // Adjust iframe height when window is resized
     window.addEventListener("resize", adjustIframeHeight);
 
-    // JavaScript to handle button actions and WebView interactions
-    const webView = document.getElementById("webView");
-    webView.src = "start.html";
+
 
     // Function to load a URL into the WebView and update the URL field
-    function loadUrl(url) {
-        webView.src = url;
+    function loadUrl(webview) {
+        if (webview.classList.contains("hidden")) {
+            webview.classList.remove("hidden");
+            currentWebView.classList.add("hidden");
+            currentWebView = webview;
+        };
     }
     
     function loadUrlNewWindow(url, type) {
@@ -276,34 +298,28 @@
     // Button event listeners
     document
         .getElementById("schulCloudBtn")
-        .addEventListener("click", () => loadUrl("https://app.schul.cloud"));
+        .addEventListener("click", () => loadUrl(webViewSC));
     document
         .getElementById("moodleBtn")
-        .addEventListener("click", () =>
-        loadUrl("https://portal.bbz-rd-eck.de"),
-        );
+        .addEventListener("click", () => loadUrl(webViewMoodle));
     document
         .getElementById("untisBtn")
-        .addEventListener("click", () => loadUrl("https://neilo.webuntis.com/WebUntis/?school=bbz-rd-eck#/basic/login"));
+        .addEventListener("click", () => loadUrl(webViewUntis));
     document
-    .getElementById("owaBtn")
-    .addEventListener("click", () =>
-        loadUrlNewWindow("https://exchange.bbz-rd-eck.de/owa", "_blank"),
-    );
+        .getElementById("owaBtn")
+        .addEventListener("click", () => loadUrlNewWindow("https://exchange.bbz-rd-eck.de/owa", "_blank"));
     document
-    .getElementById("bbbBtn")
-    .addEventListener("click", () =>
-        loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b/signin", "_blank"),
-    );
+        .getElementById("bbbBtn")
+        .addEventListener("click", () => loadUrlNewWindow("https://bbb.bbz-rd-eck.de/b/signin", "_blank"));
     document
     .getElementById("cryptPadBtn")
     .addEventListener("click", () => loadUrlNewWindow("https://cryptpad.fr", "_blank"));
     document
         .getElementById("taskcardsBtn")
-        .addEventListener("click", () => loadUrl("https://bbzrdeck.taskcards.app/#/home/start"));
+        .addEventListener("click", () => loadUrl(webViewTaskCards));
     document
     .getElementById("bbzWikiBtn")
-    .addEventListener("click", () => loadUrl("https://wiki.bbz-rd-eck.com"));
+    .addEventListener("click", () => loadUrl(webViewWiki));
     document
         .getElementById("dropdownBtn")
         .addEventListener("click", () => {
