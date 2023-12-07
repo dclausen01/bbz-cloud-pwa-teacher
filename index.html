@@ -23,8 +23,8 @@
      <!-- Header with Logo and Buttons -->
         <div id="navbar" class="flex items-center justify-between h-16 bg-white dark:bg-gray-900 p-2 shadow-md">
             <a href="https://www.bbz-rd-eck.de" target="_blank">
-                <img src="https://www.bbz-rd-eck.de/wp-content/uploads/2018/09/BBZ-Logo-Master.png" alt="BBZ Logo"
-                    class="dark:invert mr-4 max-sm:w-8 w-16" />
+                <img src="BBZ-Logo-Master.png" alt="BBZ Logo" class="dark:hidden mr-4 max-sm:w-8 w-16" />
+                <img src="BBZ-Logo-Master-dark.png" alt="BBZ Logo" class="hidden dark:visible mr-4 max-sm:w-8 w-16" />
             </a>
             <h1
                 class="mb-4 mr-2 mt-2 max-sm:hidden text-center font-bold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">
@@ -155,7 +155,7 @@
     </div>
 
    <!-- WebView Components -->
-    <iframe id="webView" src="about:blank" class="w-full mt-1 border-0" preload="https://app.schul.cloud"></iframe>
+    <iframe id="webView" allowtransparency="true" src="about:blank" class="w-full mt-1 border-0 bg-white dark:bg-gray-700" preload="https://app.schul.cloud"></iframe>
 
 </div>
 
@@ -210,7 +210,6 @@
 
     // Call the function on page load
     window.addEventListener("load", appendEntriesFromLocalStorage);
-
 
     // Function to adjust the height of the WebView to the available space
     function adjustIframeHeight() {
