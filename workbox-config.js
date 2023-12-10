@@ -8,8 +8,4 @@ module.exports = {
 		/^utm_/,
 		/^fbclid$/
 	],
-	importScripts: [
-    // Füge hier den Pfad zum aktualisierten Service Worker-Code hinzu
-    'custom-notifications.js',
-  ],
 };
