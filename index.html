@@ -196,7 +196,8 @@
 
     // JavaScript to handle button actions and WebView interactions
     const webViewStart = document.getElementById("webViewStart");
-    const webViewSC = document.getElementById("webViewSC");
+    // const webViewSC = document.getElementById("webViewSC");
+    let webViewSC = window.open("https://app.schul.cloud", "_blank");
     const webViewMoodle = document.getElementById("webViewMoodle");
     const webViewUntis = document.getElementById("webViewUntis");
     const webViewTaskCards = document.getElementById("webViewTaskCards");
@@ -336,7 +337,10 @@
     // Button event listeners
     document
         .getElementById("schulCloudBtn")
-        .addEventListener("click", () => loadUrl(webViewSC));
+        .addEventListener("click", () => {
+            window.open("https://app.schul.cloud", "_blank");
+            //loadUrl(webViewSC);
+        });
     document
         .getElementById("moodleBtn")
         .addEventListener("click", () => loadUrl(webViewMoodle));
