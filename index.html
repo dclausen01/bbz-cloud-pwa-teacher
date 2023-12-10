@@ -373,6 +373,17 @@
         const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
         dropdownList.style.top = `${buttonRect.bottom}px`;
         dropdownList.style.left = `${buttonRect.left-100}px`;
+        schulCloudWindow.moveTo(window.innerWidth - 600, window.screenY);
+    });
+
+    // Close schul.cloud window when main window is closed
+    window.addEventListener("beforeunload", function () {
+        schulCloudWindow.close();
+    });
+
+    // Adjust schul.cloud window position when main window is moved
+    window.addEventListener("move", function () {
+        schulCloudWindow.moveTo(window.innerWidth - 600, window.screenY);
     });
 
     // Prevent scrolling 
