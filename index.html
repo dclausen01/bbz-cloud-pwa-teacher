@@ -182,7 +182,7 @@
     </div>
 
    <!-- WebView Components -->
-    <iframe id="webViewSC" allowtransparency="true" target="_top" src="https://app.schul.cloud" class=" hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
+    <iframe id="webViewSC" allowtransparency="true" src="https://app.schul.cloud" class=" hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
     <iframe id="webViewMoodle" allowtransparency="true" src="https://portal.bbz-rd-eck.com/?" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
     <iframe id="webViewUntis" allowtransparency="true" src="https://neilo.webuntis.com/WebUntis/?school=bbz-rd-eck#/basic/login" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
     <iframe id="webViewTaskCards" allowtransparency="true" src="https://bbzrdeck.taskcards.app/#/home/start" class="hidden w-full mt-1 border-0 bg-white dark:bg-gray-800"></iframe>
@@ -373,17 +373,6 @@
         const buttonRect = document.getElementById("dropdownBtn").getBoundingClientRect();
         dropdownList.style.top = `${buttonRect.bottom}px`;
         dropdownList.style.left = `${buttonRect.left-100}px`;
-        schulCloudWindow.moveTo(window.innerWidth - 600, window.screenY);
-    });
-
-    // Close schul.cloud window when main window is closed
-    window.addEventListener("beforeunload", function () {
-        schulCloudWindow.close();
-    });
-
-    // Adjust schul.cloud window position when main window is moved
-    window.addEventListener("move", function () {
-        schulCloudWindow.moveTo(window.innerWidth - 600, window.screenY);
     });
 
     // Prevent scrolling 
