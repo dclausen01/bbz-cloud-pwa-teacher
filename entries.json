@@ -1,0 +1,73 @@
+[{
+    "name": "schul cloud",
+    "url": "https://app.schul.cloud",
+    "type": "button",
+    "color": "bg-yellow-500",
+    "color-hover": "bg-yellow-600",
+    "webview": "true"
+},
+{
+    "name": "Moodle",
+    "url": "https://portal.bbz-rd-eck.com/?",
+    "type": "button",
+    "color": "bg-orange-500",
+    "color-hover": "bg-orange-700",
+    "webview": "true"
+},
+{
+    "name": "BBB",
+    "url": "https://bbb.bbz-rd-eck.de/b/signin",
+    "type": "button",
+    "color": "bg-blue-800",
+    "color-hover": "bg-blue-900",
+    "webview": "false"
+},
+{
+    "name": "Mail",
+    "url": "https://exchange.bbz-rd-eck.de/owa",
+    "type": "button",
+    "color": "bg-blue-600",
+    "color-hover": "bg-blue-700",
+    "webview": "false"
+},
+{
+    "name": "UNTIS",
+    "url": "https://neilo.webuntis.com/WebUntis/?school=bbz-rd-eck#/basic/login",
+    "type": "button",
+    "color": "bg-orange-600",
+    "color-hover": "bg-orange-700",
+    "webview": "true"
+},
+{
+    "name": "Crypt Pad",
+    "url": "https://cryptpad.fr",
+    "type": "button",
+    "color": "bg-cyan-500",
+    "color-hover": "bg-cyan-600",
+    "webview": "false"
+},
+{
+    "name": "Task Cards",
+    "url": "https://neilo.webuntis.com/WebUntis/?school=bbz-rd-eck#/basic/login",
+    "type": "button",
+    "color": "bg-blue-300",
+    "color-hover": "bg-blue-500",
+    "webview": "true"
+},
+{
+    "name": "BBZ Wiki",
+    "url": "https://neilo.webuntis.com/WebUntis/?school=bbz-rd-eck#/basic/login",
+    "type": "button",
+    "color": "bg-blue-300",
+    "color-hover": "bg-blue-500",
+    "webview": "true"
+},
+{
+    "name": "Office",
+    "url": "https://office.com",
+    "type": "dropdown",
+    "color": "bg-orange-600",
+    "color-hover": "bg-orange-700",
+    "webview": "false"
+}
+]
